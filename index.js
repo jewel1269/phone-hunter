@@ -3,7 +3,7 @@ const loadPhone = async(searchText) =>{
     https://openapi.programming-hero.com/api/phones?search=${searchText}`)
     const data = await res.json();
     const phone = data.data;
-    //  console.log(phone);
+     console.log(phone);
      displayPhone(phone)
 }
 
@@ -11,7 +11,7 @@ const loadPhone = async(searchText) =>{
 const displayPhone = phone =>{
     // console.log(phone);
 
-    const phoneContainer = document.getElementById('phone-conatiner')
+    const phoneContainer = document.getElementById('phone-container')
     phoneContainer.textContent ='';
 const showAll = document.getElementById('show-all');
     if(phone.length > 12){
@@ -22,7 +22,7 @@ const showAll = document.getElementById('show-all');
   }
 
 // display only 10 phones shows
-    phone = phone.slice(0,10);
+    phone = phone.slice(0,20);
      
    
 
@@ -31,14 +31,14 @@ phone.forEach(phone => {
 
     // create a div
     const phoneCard = document.createElement('div');
-    phoneCard.classList = `card w-96 bg-gray-100 shadow-xl`
+    phoneCard.classList = `card w-64 h-[430px] bg-gray-200 shadow-xl`
     phoneCard.innerHTML = `
-    <figure><img src="${phone.image}" alt="Shoes" /></figure>
+    <figure><img class="h-[120px] mt-10" src="${phone.image}" alt="Shoes" /></figure>
     <div class="card-body">
       <h2 class="card-title">${phone.phone_name}</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
+      <p>Price : <span> 1300 </span> $</p>
       <div class="card-actions justify-center">
-        <button onclick ="handleShowDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
+        <button id="this-btn" onclick ="handleShowDetails('${phone.slug}')" class="btn btn-primary btn-sm">Show Details</button>
       </div>
     </div>
   </div>
@@ -69,8 +69,16 @@ const showPhone = (mobile) =>{
 
 const detailShow = document.getElementById('show-detail-container');
 detailShow.innerHTML = `
-<img src="${mobile.image}" alt="" />
-<p><span>Storage:</span>${mobile.mainFeatures.storage}</p>
+<img class="ml-28 h-36 w-28" src="${mobile.image}" alt="" />
+<p><span>Brand Name : </span>${mobile.brand}</p>
+<p><span>Storage: </span>${mobile.mainFeatures.storage}</p>
+<p><span>Memory: </span>${mobile.mainFeatures.memory}</p>
+<p><span>Display Size: </span>${mobile.mainFeatures.displaySize}</p>
+<p><span>WLAN: </span>${mobile.others.WLAN}</p>
+<p><span>Bluetooth: </span>${mobile.others.Bluetooth}</p>
+<p><span>Gps: </span>${mobile.others.GPS}</p>
+<p><span>NFC: </span>${mobile.others.NFC}</p>
+<p><span>Radio: </span>${mobile.others.Radio}</p>
 `
   show_details_modal.showModal()
  
@@ -96,5 +104,9 @@ else{
   loading.classList.add('hidden')
 }
 }
+
+const btn = document.getElementById('this-btn');
+
+
 
 loadPhone();

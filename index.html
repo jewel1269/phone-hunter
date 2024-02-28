@@ -11,11 +11,34 @@
     <title>hunting api</title>
 </head>
 <body>
-
-
-
     <header>
-<h2>hunting phone</h2>
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                  <li><a>Iphone</a></li>
+                  <li><a>Oppo</a></li>
+                  <li><a>Samsung</a></li>
+
+                </ul>
+              </div>
+              <a class="btn btn-ghost text-xl">Phone Collection</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+              <ul class="menu menu-horizontal px-1">
+                <li><a>Iphone</a></li>
+                <li><a>Oppo</a></li>
+                <li><a>Samsung</a></li>
+              </ul>
+            </div>
+            <div class="navbar-end mr-10 gap-2">
+                <input id="input-field" type="text" placeholder="Type here" class="input input-bordered input-accent h-6 w-44 max-w-xs" />
+                <button onclick="handleSearch ()" class="btn btn-xs btn-error">Search</button>
+            </div>
+          </div>
 
 
 
@@ -24,11 +47,6 @@
 
 <main>
 
-<section>
-    <input id="input-field" type="text" placeholder="Type here" class="input input-bordered input-accent w-full max-w-xs" />
-    <button onclick="handleSearch ()" class="btn btn-error">Search</button>
-</section>
-
 <!-- spinner or loader -->
 
 
@@ -36,10 +54,46 @@
         <div id="loading" class="text-center my-20 hidden">
             <span class="loading loading-dots loading-lg"></span>
         </div>
-        <div id="phone-conatiner" class="lg:grid lg:grid-cols-3 gap-5 sm:gap-5 sm:mt-4 p-7 lg:w-full h-72">
+       <div class="flex justify-between items-center">
+        <div id="phone-container" class="lg:grid lg:grid-cols-3 gap-5 sm:gap-5 sm:mt-4 p-7 lg:w-full h-40">
         </div>
-     <div id="show-all" class="hidden text-center my-8 mt-[1470px]">
-        <button class="btn btn-accent lg:p-3 ml-10">See All</button>
+        <div class=" w-[500px] ml-2 bg-slate-100 h-[350px] mt-56 mr-5">
+            <div class="bg-slate-200 h-[150px] rounded-2xl">
+                <div class="flex justify-around">
+                    <h3>Name:</h3>
+                    <h3>Price:</h3>
+                </div>
+                <hr>
+                <div>
+                    
+                </div>
+                <hr>
+            </div>
+            <h2 class=" ml-14">Total: <span>0</span> $ </h2>
+            <br>
+            <!-- <div class="ml-5">
+                <input type="text" placeholder="Type here" class="input input-bordered input-accent w-56 h-7 max-w-xs" />
+               <button class="btn btn-primary btn-sm">hello</button>
+            </div> -->
+
+            <label class="input input-bordered flex items-center gap-2 mt-5">
+                Name
+                <input type="text" class="grow" placeholder="jewel" />
+              </label>
+              <label class="input input-bordered flex items-center gap-2 mt-5">
+                Email
+                <input type="text" class="grow" placeholder="Jewel@site.com" />
+              </label>
+              <label class="input input-bordered flex items-center gap-2 mt-5">
+               Number
+                <input type="number" class="grow" placeholder="Please Enter Number" />
+              </label>
+            
+              <button class="btn btn-primary btn-sm ml-40 mt-7">purchase</button>
+        </div>
+       </div>
+     <div id="show-all" class="hidden text-center my-8 mt-[1530px]">
+        <button class="btn btn-accent btn-sm  w-44 ml-10">See All</button>
     </div>
     </section>
 
@@ -47,16 +101,14 @@
 
     <!-- Open the modal using ID.showModal() method -->
 <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box  bg-white">
+  <div class="modal-box  bg-orange-300 w-[400px] h-[350px]">
     <h3 id="phone-name" class="font-bold text-lg"></h3>
     <div id="show-detail-container">
-
     </div>
-    <p class="py-4">Press ESC key or click the button below to close</p>
+    <p class="py-4 text-center text-2xl"><strong>Thank You for purchase</strong></p>
     <div class="modal-action">
       <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
+        <button class="btn btn-error justify-center mr-32">Continue</button>
       </form>
     </div>
   </div>
