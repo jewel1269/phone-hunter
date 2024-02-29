@@ -36,10 +36,11 @@ phone.forEach(phone => {
     <figure><img class="h-[120px] mt-10" src="${phone.image}" alt="Shoes" /></figure>
     <div class="card-body">
       <h2 class="card-title">${phone.phone_name}</h2>
-      <p>Price : <span> 1300 </span> $</p>
-      <div class="card-actions justify-center">
-        <button id="this-btn" onclick ="handleShowDetails('${phone.slug}')" class="btn btn-primary btn-sm">Show Details</button>
+      <p>Price : <span id="this-price"> 1300 </span> $</p>
+      <div class="card-actions  justify-center">
+        <button onclick ="handleShowDetails('${phone.slug}')" class="btn btn-primary btn-xs">Show Details</button>
       </div>
+      <button id="this-btn" onclick ="theButton()" class="btn btn-accent btn-xs">Buy Now</button>
     </div>
   </div>
     `
@@ -105,8 +106,24 @@ else{
 }
 }
 
-const btn = document.getElementById('this-btn');
+let count = 0;
 
+
+const theButton = () =>{
+
+count = count + 1;
+
+
+    const priceMoney = document.getElementById('this-price');
+    const result = priceMoney.innerText;
+    const convert = parseInt(result);
+    const totalMoney = document.getElementById('Total').innerText;
+    const converted = parseInt(totalMoney);
+    const finalResult = convert + converted;
+    document.getElementById('Total').innerText = finalResult;
+ 
+    
+}
 
 
 loadPhone();
